@@ -1,4 +1,4 @@
 # 自用
 
 
-### 参考[GitHub@Zero-S1](https://github.com/Zero-S1/tmp)而来
+### 参考[GitHub@shuye72](https://github.com/shuye72/updateTeam)而来

@@ -42,12 +42,12 @@ jobs:
           git commit -m "update by shuye72 Github Action" -a || echo "Nothing to update"
       
       - name: Push changes
-        uses: ad-m/github-push-action@main
+        uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.TOKEN }}
           branch: master
       - name: Purge CDN Cache
-        run: curl https://purge.jsdelivr.net/gh/ZFeng3242/updateTeam@main/jd_zz.json
+        run: curl https://purge.jsdelivr.net/gh/ZFeng3242/updateTeam@master/jd_zz.json
       # 我自己同步到gitee使用，其他人可忽略
       - name: sync github -> gitee
         uses: Yikun/hub-mirror-action@master

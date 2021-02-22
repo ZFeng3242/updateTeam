@@ -53,7 +53,7 @@ jobs:
           github_token: ${{ secrets.TOKEN }}
           branch: master
       - name: Purge CDN Cache
-        run: curl https://purge.jsdelivr.net/gh/ZFeng3242/updateTeam@master/jd_updateSmallHomeInviteCode.json
+        run: curl https://purge.jsdelivr.net/gh/ZFeng3242/updateTeam@main/jd_updateSmallHomeInviteCode.json
       # 我自己同步到gitee使用，其他人可忽略
       - name: sync github -> gitee
         uses: Yikun/hub-mirror-action@master

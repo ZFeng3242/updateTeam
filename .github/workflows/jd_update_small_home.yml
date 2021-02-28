@@ -1,12 +1,12 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: 更新东东小窝邀请码
+name: 更新东东小窝信息
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */8 * * *'
+    - cron: '0 17-23/3 * * *'
   watch:
     types: started
   repository_dispatch:
@@ -34,33 +34,24 @@ jobs:
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-      #- name: '运行 【更新818互助码】'
-        #run: |
-          #node updateShareCode.js
-       #env:
-          #JD_COOKIE: ${{ secrets.JD_COOKIE }}
-        
       - name: commit
         run: |
           git config --global user.email ${{ secrets.EMAIL }}
-          git config --global user.name ZFeng3242
+          git config --global user.name ${{ secrets.USER_NAME }}
           git add .
-          git commit -m "update by ZFeng3242 Github Action" -a || echo "Nothing to update"
+          git commit -m "update by ZFeng3242" -a || echo "Nothing to update"
       
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.TOKEN }}
           branch: master
-      - name: Purge CDN Cache
-        run: curl https://purge.jsdelivr.net/gh/ZFeng3242/updateTeam@master/jd_updateSmallHomeInviteCode.json
-      # 我自己同步到gitee使用，其他人可忽略
       - name: sync github -> gitee
         uses: Yikun/hub-mirror-action@master
         if: env.dst_key
         with:
-          src: github/ZFeng3242 
-          dst: gitee/ZFeng3242
+          src: ${{ secrets.SRC_USER }}
+          dst: ${{ secrets.DST_USER }}
           static_list: "updateTeam"
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token: ${{ secrets.GITEE_TOKEN }}

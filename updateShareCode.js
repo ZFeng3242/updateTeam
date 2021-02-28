@@ -36,13 +36,15 @@ const JD_API_HOST = 'https://rdcseason.m.jd.com/api';
     })
 
 async function start() {
-  let oldData = await fs.readFileSync('./jd_shareCodes.json');
+  let oldData = await fs.readFileSync('./shareCodes/jd_shareCodes.json');
   oldData = JSON.parse(oldData);
   if (oldData.shareCodes[0] === $.temp[0]) {
     console.log('shareCodes暂无变化');
   } else {
     oldData.shareCodes = $.temp;
-    await fs.writeFileSync('jd_shareCodes.json', JSON.stringify(oldData));
+    if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
+    await fs.writeFileSync(`./shareCodes/jd_shareCodes.json`, JSON.stringify(oldData));
+    // await fs.writeFileSync('jd_shareCodes.json', JSON.stringify(oldData));
     console.log('文件写入成功，新的shareCodes已经替换');
   }
 }

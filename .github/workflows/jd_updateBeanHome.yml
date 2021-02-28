@@ -37,7 +37,7 @@ jobs:
       - name: commit
         run: |
           git config --global user.email ${{ secrets.EMAIL }}
-          git config --global user.name shuye72
+          git config --global user.name ZFeng3242
           git add .
           git commit -m "update by ZFeng3242 Github Action" -a || echo "Nothing to update"
       

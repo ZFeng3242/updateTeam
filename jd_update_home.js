@@ -64,7 +64,7 @@ function showMsg() {
   return new Promise(async resolve => {
     console.log($.shareCode)
     try {
-      await $.http.get({url: `https://purge.jsdelivr.net/gh/shuye72/updateTeam@master/jd_updateSmallHomeInviteCode.json`}).then((resp) => {
+      await $.http.get({url: `https://purge.jsdelivr.net/gh/lxk0301/updateTeam@master/jd_updateSmallHomeInviteCode.json`}).then((resp) => {
         if (resp.statusCode === 200) {
           console.log(`已刷新CDN缓存`)
         } else {
@@ -82,7 +82,9 @@ async function writeFile() {
   const info = {
     "inviteCode": $.shareCode || [],
   }
-  await fs.writeFileSync('jd_updateSmallHomeInviteCode.json', JSON.stringify(info));
+  if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
+  await fs.writeFileSync(`./shareCodes/jd_updateSmallHomeInviteCode.json`, JSON.stringify(info));
+  // await fs.writeFileSync('jd_updateSmallHomeInviteCode.json', JSON.stringify(info));
   console.log(`文件写入成功,inviteCode已经替换`);
 }
 function createInviteUser() {

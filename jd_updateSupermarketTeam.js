@@ -39,7 +39,7 @@ function showMsg() {
     try {
       console.log(`等待五秒后刷新CDN缓存`);
       await $.wait(5000);
-      await $.http.get({url: `https://purge.jsdelivr.net/gh/lxk0301/updateTeam@master/jd_updateTeam.json`}).then((resp) => {
+      await $.http.get({url: `https://purge.jsdelivr.net/gh/ZFeng3242/updateTeam@master/jd_updateTeam.json`}).then((resp) => {
         if (resp.statusCode === 200) {
           console.log(`已刷新CDN缓存`)
         } else {
@@ -127,7 +127,7 @@ async function getTeamId() {
 //创建PK战队API
 function smtg_createPkTeam() {
   return new Promise((resolve) => {
-    $.get(taskUrl('smtg_createPkTeam', { "teamName": `lxk030${$.index}`,  "channel": "1" }), (err, resp, data) => {
+    $.get(taskUrl('smtg_createPkTeam', { "teamName": `ZFeng00${$.index}`,  "channel": "1" }), (err, resp, data) => {
       try {
         if (err) {
           console.log('\n京小超: API查询请求失败 ‼️‼️')

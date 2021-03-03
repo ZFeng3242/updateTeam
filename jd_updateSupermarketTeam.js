@@ -1,5 +1,5 @@
 const $ = new Env('更新京小超PK队伍ID');
- //const cookie = process.env.JDSUP_COOKIE;
+// const cookie = process.env.JD_COOKIE;
 let cookiesArr = [], cookie = '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 const fs = require('fs');
@@ -7,7 +7,7 @@ const jdCookieNode = require('./jdCookie.js');
 Object.keys(jdCookieNode).forEach((item) => {
   cookiesArr.push(jdCookieNode[item])
 })
-// cookiesArr = cookiesArr.splice(0, 10);
+cookiesArr = cookiesArr.splice(0, 19);
 if (process.env.JD_DEBUG && process.env.JD_DEBUG === 'false') console.log = () => {};
 
 const JD_API_HOST = 'https://api.m.jd.com/api';
@@ -127,7 +127,7 @@ async function getTeamId() {
 //创建PK战队API
 function smtg_createPkTeam() {
   return new Promise((resolve) => {
-    $.get(taskUrl('smtg_createPkTeam', { "teamName": `惊喜${$.index}`,  "channel": "1" }), (err, resp, data) => {
+    $.get(taskUrl('smtg_createPkTeam', { "teamName": `lxk030${$.index}`,  "channel": "1" }), (err, resp, data) => {
       try {
         if (err) {
           console.log('\n京小超: API查询请求失败 ‼️‼️')

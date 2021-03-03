@@ -1,5 +1,5 @@
 const $ = new Env('更新京小超PK队伍ID');
-// const cookie = process.env.JD_COOKIE;
+// const cookie = process.env.JDSUP_COOKIE;
 let cookiesArr = [], cookie = '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 const fs = require('fs');
